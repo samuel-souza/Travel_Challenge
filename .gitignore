@@ -1,1 +1,5 @@
 feature_engineering.ipynb
+data_cleaning.ipynb
+data_exploration.ipynb
+training_model.ipynb
+/env
