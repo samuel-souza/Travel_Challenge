@@ -84,12 +84,11 @@ Para as demais colunas (com muitos valores inválidos, acima de **40%**):
     - **Marcação binária**: Se era valor inválido ou não antes do input dos valores.
 
 Como em alguns casos (como `Wifi & Connectivity`) algumas variáveis chegam a possuir 70% dos valores como nulo, decidi criar uma coluna adicional binária para marcar os valores ausentes, podendo ser útil na classificação do review.
-
  
 ![alt text](images/image3.png)
 
-![alt text](images/image4.png)
 
+![alt text](images/image4.png)
 
 A partir das visualizações anteriores, as colunas ``Seat Comfort`` e ``Cabin Staff Service`` parecem ser aproximadamente simétricas, enquanto as demais parecem possuir uma assimetria a direita.
 Portanto, os inputs serão dados por:
