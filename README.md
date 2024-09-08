@@ -136,7 +136,7 @@ Para a distribuição de `Overall_Rating` por `Aircraft`, ficou
 
 Já sob a variável `Aircraft`, referente aos modelos da aeronave, a média parece se distribuir mais uniformemente pelo intervalo de rating. Além de mostrar uma boa concentração de ratings positivos, podendo indicar uma associação positiva entre alguns modelos de aeronaves com os reviews positivos.
 
-## b-1. Verificando núvem de palavras `Overall_Rating` <= 3
+## b-1. Verificando nuvem de palavras `Overall_Rating` <= 3
 
 Com os tratamentos explicados anteriormente para a variável de ``Review``, obtive a seguinte Wordcloud
 ![alt text](images/image8.png)
@@ -145,7 +145,7 @@ A partir das palavras na wordcloud das reviews com ratings mais baixos, é poss�
 - Muitas palavras relacionadas a tempo (`time`, `delayed`, `wait`, `waiting`, `delay`, `hour`), indicando que reviews negativas provavelmente estão associadas a **atrasos em serviços, voos, etc**.
 - Coincidentemente, as palavras `customer` e `service` parecem ter a mesma frequência, podendo indicar reviews negativos sobre serviço de **atendimento ao cliente**.
 
-## b-2. Verificando núvem de palavras `Overall_Rating` >= 8
+## b-2. Verificando nuvem de palavras `Overall_Rating` >= 8
 
 ![alt text](images/image9.png)
 
