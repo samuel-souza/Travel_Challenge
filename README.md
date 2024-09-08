@@ -232,7 +232,7 @@ Para avaliar o desempenho dos modelos, utilizei as principais métricas de avali
 
 ![alt text](images/image11.png)
 
-O gráfico acima deixa claro que **o modelo que usou as informações textuais de** ``Review`` **e** ``Review_Title`` **conseguiu um melhor desempenho com os dados de teste em todas as métricas de avaliação**.  
+O gráfico acima deixa claro que **o modelo que usou as informações textuais de** ``Review`` **e** ``Review_Title`` **conseguiu um melhor desempenho com os dados de teste na maioria das métricas de avaliação**.  
 E portanto, é o melhor modelo para classificação de sentimentos com os dados trabalhados.
 
 # 5. Fazendo uma análise sobre o impacto de atrasos de viagem no NPS de 3 companhias aéreas.
