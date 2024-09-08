@@ -186,7 +186,7 @@ Além disso, **`Wifi & Connectivity` foi a variável com a menor correlação, n
 **Também é importante notar que pode haver uma multicolinearidade entre `Seat Comfort` e `Cabin Staff Service`, com uma correlação entre elas de 0.7529**
 
 # 4. Construção dos modelos para comparação
-Na construção dos modelos, utilizei a base sem tratamentos para evitar problemas de *data leackage*
+Na construção dos modelos, utilizei a base sem tratamentos para evitar problemas de *data leakage*
 ou vazamento de dados. Então fiz etapas de divisão da base em conjunto de treino e conjunto de teste com os dados textuais minimamente tratados. 
 A variável de interesse `Overall_Rating` foi transformada de forma que segue a seguinte configuração:
 
