@@ -1,12 +1,6 @@
-# Travel_Challenge
-Case - DataScientist
+# Case - DataScientist
+## Travel_Challenge 
 
-
-# Analysis map
-data_cleaning => 1, 2
-data_exploration => 3
-training_model => 4
-model_analysis => 5
 
 # Conhecendo a base de dados
 
@@ -105,7 +99,7 @@ Portanto, os inputs serão dados por:
 Para além disso, também foram realizados tratamentos nas colunas de `Review_Date`,`Date_Flown` e nas variáveis `Aircraft`, `Type Of Traveller`, `Seat Type`, `Route` que possuiam valores nulos. Por fim, foi verificado que a base possuiria 29 linhas duplicadas. Para lidar com isso, resolvi remover as linhas duplicadas por se tratar de uma parte ínfima da base e possuir bastantes inconsistências.  
 Após todos os tratamentos, usando novamente a função `df_info()` vemos todos os dados corrigidos:
 
-![alt text](image.png)
+![alt text](images/image13.png)
 
 
 # 2. Realizando tratamentos padrões de NLP para as colunas de `Review` e `Review_Title`
