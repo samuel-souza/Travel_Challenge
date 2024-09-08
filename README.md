@@ -241,48 +241,46 @@ Para avaliar o desempenho dos modelos, utilizei as principais métricas de avali
 O gráfico acima deixa claro que **o modelo que usou as informações textuais de** ``Review`` **e** ``Review_Title`` **conseguiu um melhor desempenho com os dados de teste em todas as métricas de avaliação**.  
 E portanto, é o melhor modelo para classificação de sentimentos com os dados trabalhados.
 
-# Comece respondendo as seguintes questões:
+# 5. Fazendo uma análise sobre o impacto de atrasos de viagem no NPS de 3 companhias aéreas.
+## NPS = %positivos-%negativos
 
-1. Faça uma etapa de processamento dos dados para verificar possíveis
-dados faltantes ou duplicados (done) -> fazer função
+Para verificar o impacto de atrasos de viagem no NPS, resolvi buscar essa informação diretamente nos textos das reviews e a partir disso realizar as seguintes etapas:
 
-
-2. Realize as etapas padrões de NLP nas colunas Review e Review_title (ex:
-Tokenização, remoção de stop-words, ...) (done) -> fazer função
-
-3. Exploração dos dados:
-    a. Faça um gráfico para verificar a distribuição da feature Overall_rating
-    pelas companhias aéreas. Faça um gráfico similar para verificar a
-    distribuição dessa features pelos modelos de aeronaves (Aircraft) (done)
-    b. Utilize a visualização de nuvem de palavras para estudar quais
-    palavras mais aparecem quando o Overall_rating é igual ou inferior a
-    3 e quando é igual ou superior a 8. (done)
-    c. Estude a correlação e, portanto, o possível impacto das colunas que
-    contém notas separadas ('Seat Comfort', 'Cabin StaƯ Service', 'Food
-    & Beverages', 'Ground Service', 'Inflight Entertainment', 'Wifi &
-    Connectivity') na nota final (Overall_rating) (done)
-
-4. Utilizando o critério abaixo para classificar o sentimento de cada review
-como positivo, negativo e neutro, faça dois modelos de classificação de
-sentimentos, sendo um deles utilizando os textos da review e review_title
-como inputs e o outro utilizando as notas das features separadas ('Seat
-Comfort', 'Cabin StaƯ Service', 'Food & Beverages', 'Ground Service', 'Inflight
-Entertainment', 'Wifi & Connectivity') e compare os dois modelos.
-    a. Nota final menor que 4: Negativo
-    b. Nota final entre 4 e 7: Neutro
-    c. Nota final maior que 7: Positivo
-(done)
-
-
-5. Com o modelo de classificação de sentimentos, faça uma análise sobre o
-impacto de atrasos de viagem no NPS de 3 companhias aéreas.
-a. NPS = %positivos-%negativos
-
-- Filtrar na base de teste 3 companhias aéreas
-- Filtrar comentários que não contenham "Delay"
-- Com o modelo de machine learning (model.predict()) prever as labels (negativo, neutro, positivo)
+- Filtrar na base 3 companhias aéreas
+- Com o modelo de machine learning (``model.predict()``) prever as labels (negativo, neutro, positivo)
 - Calcular NPS (%positivos-%negativos) usando a previsão dada pelo modelo
-- Adicionar comentários com "Delay"
-- Fazer novamente os cálculos de NPS
+- Fazer os cálculos de NPS
+- Filtrar comentários que não contenham "Delay" e que contenham e comparar NPS
 - Mostrar a diferença / impacto do atraso no NPS.
 
+Além disso, para interpretar o valor do NPS, adotei a classificação:
+
+- **Promotores (Pontuação 9-10)**: Clientes entusiasmados que são propensos a recomendar a empresa e a se engajar mais profundamente.
+- **Neutros (Pontuação 7-8)**: Clientes satisfeitos, mas não tão entusiásticos a ponto de recomendar ativamente.
+- **Detratores (Pontuação 0-6)**: Clientes insatisfeitos que podem divulgar uma opinião negativa e prejudicar a reputação da empresa.
+
+Após coletar a amostra de 3 companhias, usando o modelo para classificar o sentimento das reviews, obtive a seguinte tabela:
+
+![alt text](images/image12.png)
+
+Após reunir com as outras variáveis, utilizei a seguinte função para calcular o NPS:
+
+```{python}
+# NPS
+
+def calc_nps(data):
+    pct_positives = data.loc[data['sentimental_predict'] == 'positive'].shape[0] / data.shape[0]
+    pct_negatives = data.loc[data['sentimental_predict'] == 'negative'].shape[0] / data.shape[0]
+    nps = pct_positives - pct_negatives
+    return nps
+```
+
+Como resultados dessa análise (levando em consideração a amostra de companhias que foi selecionada): 
+- reviews com 'delay' no texto parecem impactar negativamente a média de `Overall_Rating`.
+- reviews que contem 'delay' no texto concentram bem mais detratores que no caso das reviews sem essa palavra-chave.
+
+# Conclusão
+
+Como conclusão, o modelo que melhor performou nos dados foi o que utilizou das variáveis textuais das reviews dos usuários. 
+O uso do modelo para a tarefa de estimar os sentimentos dos textos funcionou bem, com 0.74 de acurácia e parece funcionar bem para estimar o NPS das companhias.  
+Além disso, de acordo com o NPS calculado na amostra das 3 companhias, reviews que possuem 'delay' (atraso) no texto realmente possuem um valor de NPS menor comparado as reviews sem 'delay' e a base geral, indicando que **os atrasos impactam diretamente no NPS das companhias.**
