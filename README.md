@@ -134,7 +134,7 @@ Para a distribuição de `Overall_Rating` por `Aircraft`, ficou
 
 ![alt text](images/image7.png)
 
-Já Sob a variável `Aircraft`, referente aos modelos da aeronave, a média parece se distribuir mais uniformemente pelo intervalo de rating. Além de mostrar uma boa concentração de ratings positivos, podendo indicar uma associação positiva entre alguns modelos de aeronaves com os reviews positivos.
+Já sob a variável `Aircraft`, referente aos modelos da aeronave, a média parece se distribuir mais uniformemente pelo intervalo de rating. Além de mostrar uma boa concentração de ratings positivos, podendo indicar uma associação positiva entre alguns modelos de aeronaves com os reviews positivos.
 
 ## b-1. Verificando núvem de palavras `Overall_Rating` <= 3
 
@@ -145,13 +145,13 @@ A partir das palavras na wordcloud das reviews com ratings mais baixos, é poss�
 - Muitas palavras relacionadas a tempo (`time`, `delayed`, `wait`, `waiting`, `delay`, `hour`), indicando que reviews negativas provavelmente estão associadas a **atrasos em serviços, voos, etc**.
 - Coincidentemente, as palavras `customer` e `service` parecem ter a mesma frequência, podendo indicar reviews negativos sobre serviço de **atendimento ao cliente**.
 
-## b-2. Verificando núvem de palavras `Overall_Rating` <= 3
+## b-2. Verificando núvem de palavras `Overall_Rating` >= 8
 
 ![alt text](images/image9.png)
 
 Já na wordcloud de reviews com ratins mais altos vemos destaques como por exemplo:
 - Palavras como `friendly`, `crew`,  `service`, `helpful`, `staff` indicam que o serviço e atendimento ao cliente são muito importantes para uma avaliação positiva.
-- Outro detalhe interessante se dá pela presença de palavras como `plane`, `aircraft`, `comfortable` dão mais indícios de que o modelo da aeronave influencia positivamente em reviews positivos. 
+- Outro detalhe interessante se dá pela presença de palavras como `plane`, `aircraft`, `comfortable`. Elas dão mais indícios de que o modelo da aeronave influencia positivamente em reviews positivos. 
 Além disso, **as palavras em comum entre as duas wordclouds podem indicar que a influência desses fatores impactam diretamente experiência do cliente e consequentemente na sua avaliação.**
 
 ## c. Estudo da correlação entre variáveis de avaliações
@@ -181,7 +181,7 @@ Obtendo a seguinte visualização:
 
 ![alt text](images/image10.png)
 
-Como os indícios da wordcloud apontavam, com bastante presença de palavras como `Seat`, `Staff` e `Service`, **as variável que mais se correlacionam com `Overall_Rating` são as variáveis referentes a serviços, como: `Cabin Staff Service`, `Ground Service`, `Seat Comfort`**. Isso quer dizer que essas variáveis impactam positivamente e diretamente o rating geral. A medida que as notas dessas variáveis cresce, ou seja, quando os clientes estão satisfeitos com esses serviços, o rating geral tende a ser maior.  
+Como os indícios da wordcloud apontavam, com bastante presença de palavras como `Seat`, `Staff` e `Service`, **as variáveis que mais se correlacionam com `Overall_Rating` são as variáveis referentes a serviços, como: `Cabin Staff Service`, `Ground Service`, `Seat Comfort`**. Isso quer dizer que essas variáveis impactam positivamente e diretamente o rating geral. Nesse caso, a medida que as notas dessas variáveis cresce, ou seja, quando os clientes estão satisfeitos com esses serviços, o rating geral tende a ser maior.  
 Além disso, **`Wifi & Connectivity` foi a variável com a menor correlação, não parecendo impactar tão significativamente o Rating geral.**
 **Também é importante notar que pode haver uma multicolinearidade entre `Seat Comfort` e `Cabin Staff Service`, com uma correlação entre elas de 0.7529**
 
@@ -199,7 +199,7 @@ $$
 $$ 
 
 Combinei as colunas `Review_Title` com `Review` para se tornarem um único texto e então usei uma técnica de NLP chamada TF-IDF (Term Frequency-Inverse Document Frequency) que mede a importância de uma palavra em um texto com base na frequência da palavra e sua frequência em outros textos. Isso ajustou os dados textuais para modelagem.
-Para ambos os modelos a estratégia utilizada para otimização dos hiperparâmetros foi a `RandomizedSearchCV` do `sklearn`. A principal motivação para isso foi a priori pela questão do tempo para treinamento.
+Para ambos os modelos a estratégia utilizada para otimização dos hiperparâmetros foi a `RandomizedSearchCV` do `sklearn`. A principal motivação para isso foi, a priori, pela questão do tempo para treinamento.
 
 ## Modelo textual (Modelo 1)
 Para o construção do modelo utilizei o seguinte código:
@@ -228,7 +228,7 @@ De forma semelhante aos transformadores anteriores, `CustomImputer` faz o input 
 
 ## Comparação de métricas
 
-Para avaliar o desempenho dos modelos, utilizei as principais métricas de avaliação:
+Para avaliar o desempenho dos modelos, utilizei as principais métricas de avaliação para classificadores:
 
 ![alt text](images/image11.png)
 
@@ -277,4 +277,4 @@ Como resultados dessa análise (levando em consideração a amostra de companhia
 
 Como conclusão, o modelo que melhor performou nos dados foi o que utilizou das variáveis textuais das reviews dos usuários. 
 O uso do modelo para a tarefa de estimar os sentimentos dos textos funcionou bem, com 0.74 de acurácia e parece funcionar bem para estimar o NPS das companhias.  
-Além disso, de acordo com o NPS calculado na amostra das 3 companhias, reviews que possuem 'delay' (atraso) no texto realmente possuem um valor de NPS menor comparado as reviews sem 'delay' e a base geral, indicando que **os atrasos impactam diretamente no NPS das companhias.**
+Além disso, de acordo com o NPS calculado na amostra das 3 companhias, reviews que possuem 'delay' (atraso) no texto parecem realmente possuir um valor de NPS menor comparado as reviews sem 'delay' e a base geral, indicando que **os atrasos impactam diretamente no NPS das companhias.**
