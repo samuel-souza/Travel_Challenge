@@ -1,4 +1,4 @@
-# Case - DataScientist
+# Case - Data Scientist
 ## Travel_Challenge 
 
 
